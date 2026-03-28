@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QlipLab — Smart Clipboard Manager</title>
   <meta name="description" content="QlipLab is a powerful clipboard manager with format detection, transforms, code snippets, encrypted vault, and AI-powered actions.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <script>
     // Pre-set dark mode before Tailwind loads to avoid flash
     if (localStorage.getItem('qliplab-site-theme') === 'dark' ||
@@ -37,11 +39,11 @@
     .dark .bg-grid { background-image: radial-gradient(circle, #1e293b 1px, transparent 1px); }
   </style>
 </head>
-<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-grid">
 
   <!-- Promo Banner -->
   <div id="promo-banner" class="fixed top-0 w-full bg-gray-950 dark:bg-white text-white dark:text-gray-900 text-center py-2.5 z-[60] border-b border-gray-800 dark:border-gray-200">
-    <div class="flex items-center justify-center gap-3 text-sm">
+    <div class="flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm px-4">
       <span class="bg-accent text-white text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Early Access</span>
       <span class="font-medium" data-i18n="promo.text">Get QlipLab Premium for <strong class="text-accent">$9.99</strong> <span class="line-through opacity-50">$14.99</span> — Launch offer, limited time</span>
       <button onclick="document.getElementById('promo-banner').remove();document.getElementById('nav').style.top='0'" class="ml-2 p-1 hover:bg-white/10 dark:hover:bg-gray-900/10 rounded-full transition-colors">
@@ -57,15 +59,15 @@
         <img src="icon.png" alt="QlipLab" class="w-8 h-8 rounded-lg">
         <span class="text-xl font-bold">QlipLab</span>
       </div>
-      <div class="flex items-center gap-4">
-        <a href="#features" class="text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.features">Features</a>
-        <a href="privacy.html" class="text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.privacy">Privacy</a>
-        <a href="#contact" class="text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a>
+      <div class="flex items-center gap-2 sm:gap-4">
+        <a href="#features" class="hidden sm:block text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.features">Features</a>
+        <a href="privacy.html" class="hidden sm:block text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.privacy">Privacy</a>
+        <a href="#contact" class="hidden sm:block text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a>
         <!-- Language Selector -->
-        <select id="lang-select" class="text-xs bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/50">
+        <select id="lang-select" class="text-xs bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-1.5 sm:px-2 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/50 max-w-[80px] sm:max-w-none">
         </select>
         <!-- Theme Toggle -->
-        <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+        <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shrink-0">
           <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
         </button>
@@ -74,13 +76,13 @@
   </nav>
 
   <!-- Hero -->
-  <section class="pt-48 pb-20 px-6 bg-grid">
+  <section class="pt-48 pb-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-6">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         <span data-i18n="hero.badge">v0.1.20 beta — Available on Mac App Store</span>
       </div>
-      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
         <span data-i18n="hero.title1">Smart Clipboard</span><br>
         <span class="hero-gradient" data-i18n="hero.title2">Reimagined</span>
       </h1>
