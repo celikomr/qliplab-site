@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QlipLab — Privacy Policy</title>
+  <script>
+    if (localStorage.getItem('qliplab-site-theme') === 'dark' ||
+        (!localStorage.getItem('qliplab-site-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: { accent: '#F97316', 'accent-hover': '#EA580C' } } }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+  </style>
+</head>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5h6"/></svg>
+        </div>
+        <span class="text-xl font-bold">QlipLab</span>
+      </a>
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.home">Home</a>
+        <select id="lang-select" class="text-xs bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/50"></select>
+        <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <main class="pt-28 pb-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h1 class="text-4xl font-bold mb-2" data-i18n="privacy.title">Privacy Policy</h1>
+      <p class="text-sm text-gray-500 dark:text-gray-400 mb-10" data-i18n="privacy.updated">Last updated: March 2026 | QlipLab v0.1.19</p>
+
+      <!-- Overview -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.overview.title">Overview</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n="privacy.overview.text">QlipLab is a local-first clipboard manager. Your data stays on your device. We do not collect, transmit, or store your clipboard content on any external server.</p>
+      </section>
+
+      <!-- Data We Access -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.dataAccess.title">Data We Access</h2>
+        <div class="space-y-3">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.dataAccess.clipboard.title">Clipboard content</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.dataAccess.clipboard.desc">Text and images you copy are stored locally in a SQLite database on your device. This data never leaves your computer.</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.dataAccess.vault.title">Secure vault data</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.dataAccess.vault.desc">Vault items are encrypted with AES-256-GCM using a password only you know. Encrypted data is stored locally.</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.dataAccess.settings.title">App settings</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.dataAccess.settings.desc">Your preferences (theme, history limit, etc.) are stored locally on your device.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Permissions -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.permissions.title">System Permissions</h2>
+        <div class="space-y-3">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.permissions.accessibility.title">Accessibility</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.permissions.accessibility.desc">Required to paste clipboard content into other applications via simulated Cmd+V keystroke (CGEvent) and for snippet auto-expansion trigger detection. macOS will prompt you to grant this permission on first use. This is the same standard permission used by all clipboard managers.</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.permissions.network.title">Network (Optional)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.permissions.network.desc">Only used for optional features: AI text processing (your own API key), opt-in crash reporting, and manual issue reporting. No background network activity occurs.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Optional Data Collection -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.optional.title">Optional Data Collection</h2>
+        <div class="space-y-3">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.optional.crash.title">Crash reports (opt-in)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.optional.crash.desc">If you enable auto error reporting, we send crash details (error message, stack trace, app version, OS version) to help improve the app. No clipboard content, vault data, or personal information is included.</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.optional.feedback.title">Manual feedback</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.optional.feedback.desc">When you submit an issue report, only the information you explicitly type is sent.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data We Do NOT Collect -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.noCollect.title">Data We Do NOT Collect</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span data-i18n="privacy.noCollect.analytics">No analytics or usage tracking</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span data-i18n="privacy.noCollect.ads">No advertising identifiers</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span data-i18n="privacy.noCollect.clipboard">No clipboard content transmitted</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span data-i18n="privacy.noCollect.vault">No vault passwords or encrypted data</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span data-i18n="privacy.noCollect.personal">No personal information collected</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            <span data-i18n="privacy.noCollect.thirdparty">No third-party tracking services</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Data Storage -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.storage.title">Data Storage</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed" data-i18n="privacy.storage.text">All data is stored locally in the app's sandboxed data directory. Clipboard history is stored in plain text in SQLite. Vault items are encrypted with AES-256-GCM before storage. You can delete all data at any time from within the app.</p>
+      </section>
+
+      <!-- AI Features -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.ai.title">AI Features (Optional, User-Initiated)</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4" data-i18n="privacy.ai.intro">QlipLab offers optional AI-powered text processing (summarize, translate, fix grammar, etc.). These features are disabled by default and require your own API key and explicit consent.</p>
+        <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-5 space-y-2">
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.ai.direct">Data is sent directly from your device to the AI provider over encrypted HTTPS. QlipLab does NOT act as an intermediary.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.ai.noStore">QlipLab does NOT store, log, or have access to data sent to AI providers.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.ai.sensitive">AI actions are automatically blocked for items detected as sensitive (passwords, API keys, credit cards).</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.ai.vault">Vault-encrypted data is never accessible to AI features.</p>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.ai.manual">No AI processing occurs without your explicit, manual action.</p>
+        </div>
+      </section>
+
+      <!-- Third-Party Services -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.thirdparty.title">Third-Party Services</h2>
+        <div class="space-y-3">
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.thirdparty.crash.title">Crash reporting (opt-in)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.thirdparty.crash.desc">Uses a secure endpoint to log crash reports. No clipboard or personal data is included.</p>
+          </div>
+          <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+            <h3 class="font-medium mb-1" data-i18n="privacy.thirdparty.ai.title">AI providers (opt-in, user-initiated)</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="privacy.thirdparty.ai.desc">When you explicitly use AI features, your clipboard text is sent to Anthropic (api.anthropic.com) or OpenAI (api.openai.com) depending on your chosen provider. See their respective privacy policies.</p>
+          </div>
+        </div>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-3" data-i18n="privacy.thirdparty.none">No third-party analytics, advertising, or tracking services are used.</p>
+      </section>
+
+      <!-- Disclaimer -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.disclaimer.title">Disclaimer & Limitation of Liability</h2>
+        <div class="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800/30 rounded-xl p-5 space-y-3 text-sm text-gray-700 dark:text-gray-300">
+          <p data-i18n="privacy.disclaimer.asis">QlipLab is provided "AS IS" without warranty of any kind, express or implied.</p>
+          <p data-i18n="privacy.disclaimer.ai">When you choose to use AI features, you are solely responsible for the content you send to third-party AI providers. QlipLab and its developers accept no liability for any data you choose to transmit to external services.</p>
+          <p data-i18n="privacy.disclaimer.sensitive">Sensitive data detection uses automated pattern matching and is NOT guaranteed to catch all sensitive content.</p>
+          <p data-i18n="privacy.disclaimer.encryption">Vault encryption uses industry-standard AES-256-GCM. However, no encryption system is infallible.</p>
+          <p data-i18n="privacy.disclaimer.liability">In no event shall QlipLab or its developers be liable for any direct, indirect, incidental, special, or consequential damages arising from the use of this software.</p>
+        </div>
+      </section>
+
+      <!-- Your Rights -->
+      <section class="mb-8">
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.rights.title">Your Rights</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+            <span data-i18n="privacy.rights.images">Disable image storage in Settings</span>
+          </div>
+          <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+            <span data-i18n="privacy.rights.clear">Clear clipboard history anytime</span>
+          </div>
+          <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+            <span data-i18n="privacy.rights.autoClear">Enable auto-clear on quit</span>
+          </div>
+          <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+            <span data-i18n="privacy.rights.crash">Disable crash reporting anytime</span>
+          </div>
+          <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+            <span data-i18n="privacy.rights.aiConsent">Revoke AI consent anytime</span>
+          </div>
+          <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+            <span data-i18n="privacy.rights.apiKey">Delete API keys from Settings</span>
+          </div>
+          <div class="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4 text-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4"/></svg>
+            <span data-i18n="privacy.rights.uninstall">Uninstalling removes all local data</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-accent" data-i18n="privacy.contact.title">Contact</h2>
+        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+          <span data-i18n="privacy.contact.text">For questions about this privacy policy, use the built-in "Report Issue" feature (Settings → Report Issue) or contact us at</span>
+          <a href="mailto:celikomr@icloud.com" class="text-accent hover:text-accent-hover"> celikomr@icloud.com</a>.
+        </p>
+      </section>
+
+      <p class="mt-10 text-sm text-gray-400">&copy; 2026 omercelik. All rights reserved.</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-gray-200 dark:border-gray-800">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-500">&copy; 2026 omercelik. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="index.html" class="text-sm text-gray-500 hover:text-accent transition-colors" data-i18n="nav.home">Home</a>
+        <a href="mailto:celikomr@icloud.com" class="text-sm text-gray-500 hover:text-accent transition-colors" data-i18n="footer.support">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      en: {
+        'nav.home': 'Home', 'footer.support': 'Support',
+        'privacy.title': 'Privacy Policy', 'privacy.updated': 'Last updated: March 2026 | QlipLab v0.1.19',
+        'privacy.overview.title': 'Overview', 'privacy.overview.text': 'QlipLab is a local-first clipboard manager. Your data stays on your device. We do not collect, transmit, or store your clipboard content on any external server.',
+        'privacy.dataAccess.title': 'Data We Access',
+        'privacy.dataAccess.clipboard.title': 'Clipboard content', 'privacy.dataAccess.clipboard.desc': 'Text and images you copy are stored locally in a SQLite database on your device. This data never leaves your computer.',
+        'privacy.dataAccess.vault.title': 'Secure vault data', 'privacy.dataAccess.vault.desc': 'Vault items are encrypted with AES-256-GCM using a password only you know. Encrypted data is stored locally.',
+        'privacy.dataAccess.settings.title': 'App settings', 'privacy.dataAccess.settings.desc': 'Your preferences (theme, history limit, etc.) are stored locally on your device.',
+        'privacy.permissions.title': 'System Permissions',
+        'privacy.permissions.accessibility.title': 'Accessibility', 'privacy.permissions.accessibility.desc': 'Required to paste clipboard content into other applications via simulated Cmd+V keystroke (CGEvent) and for snippet auto-expansion trigger detection. macOS will prompt you to grant this permission on first use. This is the same standard permission used by all clipboard managers.',
+        'privacy.permissions.network.title': 'Network (Optional)', 'privacy.permissions.network.desc': 'Only used for optional features: AI text processing (your own API key), opt-in crash reporting, and manual issue reporting. No background network activity occurs.',
+        'privacy.optional.title': 'Optional Data Collection',
+        'privacy.optional.crash.title': 'Crash reports (opt-in)', 'privacy.optional.crash.desc': 'If you enable auto error reporting, we send crash details (error message, stack trace, app version, OS version) to help improve the app. No clipboard content, vault data, or personal information is included.',
+        'privacy.optional.feedback.title': 'Manual feedback', 'privacy.optional.feedback.desc': 'When you submit an issue report, only the information you explicitly type is sent.',
+        'privacy.noCollect.title': 'Data We Do NOT Collect',
+        'privacy.noCollect.analytics': 'No analytics or usage tracking', 'privacy.noCollect.ads': 'No advertising identifiers',
+        'privacy.noCollect.clipboard': 'No clipboard content transmitted', 'privacy.noCollect.vault': 'No vault passwords or encrypted data',
+        'privacy.noCollect.personal': 'No personal information collected', 'privacy.noCollect.thirdparty': 'No third-party tracking services',
+        'privacy.storage.title': 'Data Storage', 'privacy.storage.text': 'All data is stored locally in the app\'s sandboxed data directory. Clipboard history is stored in plain text in SQLite. Vault items are encrypted with AES-256-GCM before storage. You can delete all data at any time from within the app.',
+        'privacy.ai.title': 'AI Features (Optional, User-Initiated)', 'privacy.ai.intro': 'QlipLab offers optional AI-powered text processing (summarize, translate, fix grammar, etc.). These features are disabled by default and require your own API key and explicit consent.',
+        'privacy.ai.direct': 'Data is sent directly from your device to the AI provider over encrypted HTTPS. QlipLab does NOT act as an intermediary.',
+        'privacy.ai.noStore': 'QlipLab does NOT store, log, or have access to data sent to AI providers.',
+        'privacy.ai.sensitive': 'AI actions are automatically blocked for items detected as sensitive (passwords, API keys, credit cards).',
+        'privacy.ai.vault': 'Vault-encrypted data is never accessible to AI features.',
+        'privacy.ai.manual': 'No AI processing occurs without your explicit, manual action.',
+        'privacy.thirdparty.title': 'Third-Party Services',
+        'privacy.thirdparty.crash.title': 'Crash reporting (opt-in)', 'privacy.thirdparty.crash.desc': 'Uses a secure endpoint to log crash reports. No clipboard or personal data is included.',
+        'privacy.thirdparty.ai.title': 'AI providers (opt-in, user-initiated)', 'privacy.thirdparty.ai.desc': 'When you explicitly use AI features, your clipboard text is sent to Anthropic (api.anthropic.com) or OpenAI (api.openai.com) depending on your chosen provider. See their respective privacy policies.',
+        'privacy.thirdparty.none': 'No third-party analytics, advertising, or tracking services are used.',
+        'privacy.disclaimer.title': 'Disclaimer & Limitation of Liability',
+        'privacy.disclaimer.asis': 'QlipLab is provided "AS IS" without warranty of any kind, express or implied.',
+        'privacy.disclaimer.ai': 'When you choose to use AI features, you are solely responsible for the content you send to third-party AI providers.',
+        'privacy.disclaimer.sensitive': 'Sensitive data detection uses automated pattern matching and is NOT guaranteed to catch all sensitive content.',
+        'privacy.disclaimer.encryption': 'Vault encryption uses industry-standard AES-256-GCM. However, no encryption system is infallible.',
+        'privacy.disclaimer.liability': 'In no event shall QlipLab or its developers be liable for any direct, indirect, incidental, special, or consequential damages arising from the use of this software.',
+        'privacy.rights.title': 'Your Rights',
+        'privacy.rights.images': 'Disable image storage in Settings', 'privacy.rights.clear': 'Clear clipboard history anytime',
+        'privacy.rights.autoClear': 'Enable auto-clear on quit', 'privacy.rights.crash': 'Disable crash reporting anytime',
+        'privacy.rights.aiConsent': 'Revoke AI consent anytime', 'privacy.rights.apiKey': 'Delete API keys from Settings',
+        'privacy.rights.uninstall': 'Uninstalling removes all local data',
+        'privacy.contact.title': 'Contact', 'privacy.contact.text': 'For questions about this privacy policy, use the built-in "Report Issue" feature (Settings → Report Issue) or contact us at',
+      },
+      tr: {
+        'nav.home': 'Ana Sayfa', 'footer.support': 'Destek',
+        'privacy.title': 'Gizlilik Politikası', 'privacy.updated': 'Son güncelleme: Mart 2026 | QlipLab v0.1.19',
+        'privacy.overview.title': 'Genel Bakış', 'privacy.overview.text': 'QlipLab yerel öncelikli bir pano yöneticisidir. Verileriniz cihazınızda kalır. Pano içeriğinizi herhangi bir harici sunucuda toplamıyor, iletmiyor veya saklamıyoruz.',
+        'privacy.dataAccess.title': 'Eriştiğimiz Veriler',
+        'privacy.dataAccess.clipboard.title': 'Pano içeriği', 'privacy.dataAccess.clipboard.desc': 'Kopyaladığınız metin ve resimler cihazınızdaki SQLite veritabanında yerel olarak saklanır. Bu veriler bilgisayarınızdan asla çıkmaz.',
+        'privacy.dataAccess.vault.title': 'Güvenli kasa verileri', 'privacy.dataAccess.vault.desc': 'Kasa öğeleri yalnızca sizin bildiğiniz bir şifre ile AES-256-GCM kullanılarak şifrelenir. Şifreli veriler yerel olarak saklanır.',
+        'privacy.dataAccess.settings.title': 'Uygulama ayarları', 'privacy.dataAccess.settings.desc': 'Tercihleriniz (tema, geçmiş limiti vb.) cihazınızda yerel olarak saklanır.',
+        'privacy.permissions.title': 'Sistem İzinleri',
+        'privacy.permissions.accessibility.title': 'Erişilebilirlik', 'privacy.permissions.accessibility.desc': 'Simüle edilmiş Cmd+V ile diğer uygulamalara pano içeriği yapıştırmak ve snippet otomatik genişletme tetikleyici algılaması için gereklidir. macOS ilk kullanımda bu izni vermenizi isteyecektir.',
+        'privacy.permissions.network.title': 'Ağ (İsteğe Bağlı)', 'privacy.permissions.network.desc': 'Yalnızca isteğe bağlı özellikler için kullanılır: Yapay zeka işleme, hata raporlama ve sorun bildirme.',
+        'privacy.noCollect.title': 'Toplamadığımız Veriler',
+        'privacy.noCollect.analytics': 'Analitik veya kullanım izleme yok', 'privacy.noCollect.ads': 'Reklam tanımlayıcıları yok',
+        'privacy.noCollect.clipboard': 'Pano içeriği iletilmiyor', 'privacy.noCollect.vault': 'Kasa şifreleri veya şifreli veriler yok',
+        'privacy.noCollect.personal': 'Kişisel bilgi toplanmıyor', 'privacy.noCollect.thirdparty': 'Üçüncü taraf izleme servisleri yok',
+        'privacy.rights.title': 'Haklarınız',
+        'privacy.contact.title': 'İletişim', 'privacy.contact.text': 'Bu gizlilik politikası hakkında sorularınız için uygulama içi "Sorun Bildir" özelliğini (Ayarlar → Sorun Bildir) kullanın veya bize ulaşın:',
+      },
+    };
+
+    const langNames = {
+      en: 'English', tr: 'Türkçe', ar: 'العربية', de: 'Deutsch', fr: 'Français',
+      es: 'Español', pt: 'Português', zh: '中文', ja: '日本語', ko: '한국어',
+      ru: 'Русский', it: 'Italiano', hi: 'हिन्दी', nl: 'Nederlands', pl: 'Polski'
+    };
+
+    const select = document.getElementById('lang-select');
+    Object.entries(langNames).forEach(([code, name]) => {
+      const opt = document.createElement('option');
+      opt.value = code;
+      opt.textContent = name;
+      select.appendChild(opt);
+    });
+
+    function getDefaultLang() {
+      const saved = localStorage.getItem('qliplab-site-lang');
+      if (saved && translations[saved]) return saved;
+      const sys = navigator.language.split('-')[0];
+      return translations[sys] ? sys : 'en';
+    }
+
+    function applyTranslations(lang) {
+      const t = { ...translations.en, ...(translations[lang] || {}) };
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      select.value = lang;
+      localStorage.setItem('qliplab-site-lang', lang);
+    }
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('qliplab-site-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    select.addEventListener('change', (e) => applyTranslations(e.target.value));
+    applyTranslations(getDefaultLang());
+  </script>
+</body>
+</html>

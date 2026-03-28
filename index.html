@@ -3,140 +3,410 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QlipLab — Privacy Policy</title>
+  <title>QlipLab — Smart Clipboard Manager</title>
+  <meta name="description" content="QlipLab is a powerful clipboard manager with format detection, transforms, code snippets, encrypted vault, and AI-powered actions.">
+  <script>
+    // Pre-set dark mode before Tailwind loads to avoid flash
+    if (localStorage.getItem('qliplab-site-theme') === 'dark' ||
+        (!localStorage.getItem('qliplab-site-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: '#F97316',
+            'accent-hover': '#EA580C',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0B1120;
-      color: #e2e8f0;
-      line-height: 1.7;
-      padding: 2rem;
-    }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    h1 {
-      font-size: 1.75rem;
-      margin-bottom: 0.25rem;
-      color: #F97316;
-    }
-    .updated {
-      font-size: 0.8rem;
-      color: #94a3b8;
-      margin-bottom: 2rem;
-    }
-    h2 {
-      font-size: 1.1rem;
-      color: #FBBF24;
-      margin-top: 1.75rem;
-      margin-bottom: 0.5rem;
-    }
-    p { margin-bottom: 0.75rem; }
-    ul {
-      padding-left: 1.5rem;
-      margin-bottom: 0.75rem;
-    }
-    li { margin-bottom: 0.35rem; }
-    strong { color: #f8fafc; }
-    .disclaimer {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 8px;
-      padding: 1rem;
-      font-size: 0.85rem;
-      margin-top: 0.5rem;
-    }
-    a { color: #F97316; }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+    .feature-card { transition: transform 0.2s, box-shadow 0.2s; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .dark .feature-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.4); }
+    .hero-gradient { background: linear-gradient(135deg, #F97316 0%, #F59E0B 50%, #EF4444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .bg-grid { background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px); background-size: 24px 24px; }
+    .dark .bg-grid { background-image: radial-gradient(circle, #1e293b 1px, transparent 1px); }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>QlipLab Privacy Policy</h1>
-    <p class="updated">Last updated: March 2026 | QlipLab v0.1.0</p>
+<body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-    <h2>Overview</h2>
-    <p>QlipLab is a local-first clipboard manager. Your data stays on your device. We do not collect, transmit, or store your clipboard content on any external server.</p>
-
-    <h2>Data We Access</h2>
-    <ul>
-      <li><strong>Clipboard content</strong> — Text and images you copy are stored locally in a SQLite database on your device. This data never leaves your computer.</li>
-      <li><strong>Secure vault data</strong> — Vault items are encrypted with AES-256-GCM using a password only you know. Encrypted data is stored locally.</li>
-      <li><strong>App settings</strong> — Your preferences (theme, history limit, etc.) are stored locally on your device.</li>
-    </ul>
-
-    <h2>Optional Data Collection</h2>
-    <ul>
-      <li><strong>Crash reports (opt-in)</strong> — If you enable auto error reporting, we send crash details (error message, stack trace, app version, OS version) to help improve the app. No clipboard content, vault data, or personal information is included in these reports.</li>
-      <li><strong>Manual feedback</strong> — When you submit an issue report, only the information you explicitly type is sent.</li>
-    </ul>
-
-    <h2>Data We Do NOT Collect</h2>
-    <ul>
-      <li>No analytics or usage tracking</li>
-      <li>No advertising identifiers</li>
-      <li>No clipboard content is sent by QlipLab itself (see AI Features below for user-initiated transfers)</li>
-      <li>No vault passwords or encrypted data is transmitted</li>
-      <li>No personal information is collected</li>
-    </ul>
-
-    <h2>Data Storage</h2>
-    <p>All data is stored locally in the app's sandboxed data directory. Clipboard history is stored in plain text in SQLite. Vault items are encrypted with AES-256-GCM before storage. You can delete all data at any time from within the app.</p>
-
-    <h2>AI Features (Optional, User-Initiated)</h2>
-    <p>QlipLab offers optional AI-powered text processing (summarize, translate, fix grammar, etc.). These features are <strong>disabled by default</strong> and require:</p>
-    <ul>
-      <li>You to provide your own API key (Anthropic or OpenAI)</li>
-      <li>Explicit consent via a dedicated consent dialog with checkboxes</li>
-      <li>Manual confirmation before each individual AI request</li>
-    </ul>
-    <p><strong>When you use AI features:</strong></p>
-    <ul>
-      <li>Your clipboard text content is sent directly from your device to the selected AI provider's API over encrypted HTTPS</li>
-      <li>QlipLab does NOT act as an intermediary — data goes directly from your device to the provider</li>
-      <li>QlipLab does NOT store, log, or have access to the data you send to AI providers</li>
-      <li>The AI provider's own privacy policy and data retention rules apply</li>
-    </ul>
-    <p><strong>Safety measures:</strong></p>
-    <ul>
-      <li>AI actions are automatically blocked for items detected as sensitive (passwords, API keys, credit cards, personal IDs)</li>
-      <li>A confirmation dialog is shown before every AI request</li>
-      <li>Vault-encrypted data is never accessible to AI features</li>
-      <li>No AI processing occurs without your explicit, manual action</li>
-    </ul>
-
-    <h2>Third-Party Services</h2>
-    <ul>
-      <li><strong>Crash reporting (opt-in)</strong> — Uses a secure endpoint to log crash reports. No clipboard or personal data is included.</li>
-      <li><strong>AI providers (opt-in, user-initiated)</strong> — When you explicitly use AI features, your clipboard text is sent to Anthropic (api.anthropic.com) or OpenAI (api.openai.com) depending on your chosen provider. See their respective privacy policies for data handling details.</li>
-    </ul>
-    <p>No third-party analytics, advertising, or tracking services are used.</p>
-
-    <h2>Disclaimer &amp; Limitation of Liability</h2>
-    <div class="disclaimer">
-      <p>QlipLab is provided "AS IS" without warranty of any kind, express or implied.</p>
-      <p><strong>AI features:</strong> When you choose to use AI features, you are solely responsible for the content you send to third-party AI providers. QlipLab and its developers accept no liability for any data you choose to transmit to external services.</p>
-      <p><strong>Sensitive data detection:</strong> QlipLab uses automated pattern matching to detect potentially sensitive content. This detection is provided as a convenience and is NOT guaranteed to catch all sensitive content.</p>
-      <p><strong>Encryption:</strong> Vault encryption uses industry-standard AES-256-GCM. However, no encryption system is infallible.</p>
-      <p>In no event shall QlipLab or its developers be liable for any direct, indirect, incidental, special, or consequential damages arising from the use of this software.</p>
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="icon.png" alt="QlipLab" class="w-8 h-8 rounded-lg">
+        <span class="text-xl font-bold">QlipLab</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#features" class="text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.features">Features</a>
+        <a href="privacy.html" class="text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.privacy">Privacy</a>
+        <a href="#contact" class="text-sm text-gray-600 dark:text-gray-400 hover:text-accent transition-colors" data-i18n="nav.contact">Contact</a>
+        <!-- Language Selector -->
+        <select id="lang-select" class="text-xs bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-2 py-1.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-accent/50">
+        </select>
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+          <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        </button>
+      </div>
     </div>
+  </nav>
 
-    <h2>Your Rights</h2>
-    <ul>
-      <li>You can disable image storage at any time in Settings</li>
-      <li>You can clear all clipboard history at any time</li>
-      <li>You can enable auto-clear on quit</li>
-      <li>You can disable crash reporting at any time</li>
-      <li>You can revoke AI consent at any time in Settings</li>
-      <li>You can delete your API key at any time from Settings</li>
-      <li>Uninstalling the app removes all local data</li>
-    </ul>
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6 bg-grid">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span data-i18n="hero.badge">v0.1.19 beta — Available on Mac App Store</span>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
+        <span data-i18n="hero.title1">Smart Clipboard</span><br>
+        <span class="hero-gradient" data-i18n="hero.title2">Reimagined</span>
+      </h1>
+      <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10" data-i18n="hero.subtitle">
+        A powerful clipboard manager with format detection, intelligent transforms, code snippets, encrypted vault, and AI-powered actions. Privacy-first — all data stays on your device.
+      </p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+        <!-- Mac App Store -->
+        <a href="#" class="inline-flex items-center gap-2 bg-accent hover:bg-accent-hover text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg shadow-accent/25">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <span data-i18n="hero.download">Mac App Store</span>
+        </a>
+        <!-- Microsoft Store — TODO: update href when published -->
+        <a href="#" class="inline-flex items-center gap-2 bg-gray-900 dark:bg-white dark:text-gray-900 hover:bg-gray-700 dark:hover:bg-gray-200 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-lg">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>
+          <span data-i18n="hero.downloadWin">Microsoft Store</span>
+        </a>
+      </div>
+      <!-- App Screenshot -->
+      <div class="max-w-md mx-auto">
+        <img src="app-screenshot.png" alt="QlipLab Clipboard History" class="rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700">
+      </div>
+    </div>
+  </section>
 
-    <h2>Contact</h2>
-    <p>For questions about this privacy policy, please use the built-in "Report Issue" feature in the app (Settings → Report Issue) or contact us at <a href="mailto:qliplab@celikomr.dev">qliplab@celikomr.dev</a>.</p>
+  <!-- Features -->
+  <section id="features" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold mb-4" data-i18n="features.title">Everything you need</h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-xl mx-auto" data-i18n="features.subtitle">QlipLab goes beyond simple copy-paste with intelligent features that boost your productivity.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-    <p style="margin-top: 2rem; font-size: 0.8rem; color: #64748b;">&copy; 2026 &Ouml;mer &Ccedil;elik. All rights reserved.</p>
-  </div>
+        <!-- Feature 1 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 012-2h2a2 2 0 012 2M9 5h6"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.history.title">Clipboard History</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.history.desc">Auto-captures everything you copy. Search, pin, and filter by format. Supports text, images, and rich content.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-green-100 dark:bg-green-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.formats.title">Format Detection</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.formats.desc">Automatically detects JSON, JWT, Base64, URL, SQL, XML, YAML, UUID, timestamps, colors, and more.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-purple-600 dark:text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.transforms.title">Smart Transforms</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.transforms.desc">One-click beautify, decode, encode. Chain multiple transforms together with the pipeline builder.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-orange-600 dark:text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.snippets.title">Code Snippets</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.snippets.desc">Save reusable code blocks with syntax highlighting. Template variables and trigger-based auto-expansion.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-red-100 dark:bg-red-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.vault.title">Secure Vault</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.vault.desc">AES-256-GCM encrypted storage for cards, bank details, addresses, and more. Auto-lock with brute-force protection.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-yellow-100 dark:bg-yellow-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-yellow-600 dark:text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.ai.title">AI Actions</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.ai.desc">Summarize, translate, fix grammar, explain code. Uses your own API key — your data, your choice.</p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-cyan-600 dark:text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.diff.title">Side-by-Side Diff</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.diff.desc">Compare any two clipboard items instantly with visual additions, deletions, and changes highlighting.</p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-indigo-600 dark:text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.privacy.title">Privacy First</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.privacy.desc">All data stored locally. No telemetry, no tracking, no cloud. Optional crash reporting is opt-in only.</p>
+        </div>
+
+        <!-- Feature 9 -->
+        <div class="feature-card bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="w-10 h-10 rounded-xl bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center mb-4">
+            <svg class="w-5 h-5 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"/></svg>
+          </div>
+          <h3 class="font-semibold mb-2" data-i18n="features.i18n.title">15 Languages</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="features.i18n.desc">Full localization including RTL support. English, Turkish, Arabic, German, French, Spanish, and more.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Keyboard Shortcuts -->
+  <section class="py-20 px-6 bg-gray-50 dark:bg-gray-900/50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4" data-i18n="shortcuts.title">Keyboard-Driven</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-10" data-i18n="shortcuts.subtitle">Designed for speed. Everything is accessible from your keyboard.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+          <kbd class="text-xs font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Cmd+Shift+V</kbd>
+          <p class="text-sm mt-2 text-gray-600 dark:text-gray-400" data-i18n="shortcuts.toggle">Toggle window</p>
+        </div>
+        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+          <kbd class="text-xs font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Option+D</kbd>
+          <p class="text-sm mt-2 text-gray-600 dark:text-gray-400" data-i18n="shortcuts.diff">Compare mode</p>
+        </div>
+        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+          <kbd class="text-xs font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Arrow Keys</kbd>
+          <p class="text-sm mt-2 text-gray-600 dark:text-gray-400" data-i18n="shortcuts.navigate">Navigate list</p>
+        </div>
+        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-4">
+          <kbd class="text-xs font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">Enter</kbd>
+          <p class="text-sm mt-2 text-gray-600 dark:text-gray-400" data-i18n="shortcuts.paste">Select & paste</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Permissions Info -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-4 text-center" data-i18n="permissions.title">Permissions</h2>
+      <p class="text-gray-600 dark:text-gray-400 text-center mb-10" data-i18n="permissions.subtitle">QlipLab requires minimal permissions to work its magic.</p>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+              <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+            </div>
+            <h3 class="font-semibold" data-i18n="permissions.accessibility.title">Accessibility</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="permissions.accessibility.desc">Required to paste clipboard content into other apps via simulated Cmd+V. macOS will prompt you on first use. This is the same permission used by all clipboard managers.</p>
+        </div>
+        <div class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-6">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+              <svg class="w-4 h-4 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+            </div>
+            <h3 class="font-semibold" data-i18n="permissions.network.title">Network (Optional)</h3>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400" data-i18n="permissions.network.desc">Only used for optional features: AI actions (your API key), crash reporting (opt-in), and issue reporting. No background network activity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 px-6 bg-gray-50 dark:bg-gray-900/50">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4" data-i18n="contact.title">Contact & Support</h2>
+      <p class="text-gray-600 dark:text-gray-400 mb-8" data-i18n="contact.subtitle">Questions, feedback, or issues? Use the built-in report feature or reach out directly.</p>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl px-6 py-4 flex items-center gap-3">
+          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+          <span class="text-sm text-gray-600 dark:text-gray-400" data-i18n="contact.inapp">In-app: Settings → Report Issue</span>
+        </div>
+        <a href="mailto:celikomr@icloud.com" class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl px-6 py-4 flex items-center gap-3 hover:border-accent transition-colors">
+          <svg class="w-5 h-5 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <span class="text-sm">celikomr@icloud.com</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 border-t border-gray-200 dark:border-gray-800">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-gray-500">&copy; 2026 omercelik. All rights reserved.</p>
+      <div class="flex items-center gap-6">
+        <a href="privacy.html" class="text-sm text-gray-500 hover:text-accent transition-colors" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="mailto:celikomr@icloud.com" class="text-sm text-gray-500 hover:text-accent transition-colors" data-i18n="footer.support">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- i18n + Theme Script -->
+  <script>
+    const translations = {
+      en: {
+        'nav.features': 'Features', 'nav.privacy': 'Privacy', 'nav.contact': 'Contact',
+        'hero.badge': 'v0.1.19 beta — Available on Mac App Store',
+        'hero.title1': 'Smart Clipboard', 'hero.title2': 'Reimagined',
+        'hero.subtitle': 'A powerful clipboard manager with format detection, intelligent transforms, code snippets, encrypted vault, and AI-powered actions. Privacy-first — all data stays on your device.',
+        'hero.download': 'Mac App Store',
+        'hero.downloadWin': 'Microsoft Store',
+        'features.title': 'Everything you need', 'features.subtitle': 'QlipLab goes beyond simple copy-paste with intelligent features that boost your productivity.',
+        'features.history.title': 'Clipboard History', 'features.history.desc': 'Auto-captures everything you copy. Search, pin, and filter by format. Supports text, images, and rich content.',
+        'features.formats.title': 'Format Detection', 'features.formats.desc': 'Automatically detects JSON, JWT, Base64, URL, SQL, XML, YAML, UUID, timestamps, colors, and more.',
+        'features.transforms.title': 'Smart Transforms', 'features.transforms.desc': 'One-click beautify, decode, encode. Chain multiple transforms together with the pipeline builder.',
+        'features.snippets.title': 'Code Snippets', 'features.snippets.desc': 'Save reusable code blocks with syntax highlighting. Template variables and trigger-based auto-expansion.',
+        'features.vault.title': 'Secure Vault', 'features.vault.desc': 'AES-256-GCM encrypted storage for cards, bank details, addresses, and more. Auto-lock with brute-force protection.',
+        'features.ai.title': 'AI Actions', 'features.ai.desc': 'Summarize, translate, fix grammar, explain code. Uses your own API key — your data, your choice.',
+        'features.diff.title': 'Side-by-Side Diff', 'features.diff.desc': 'Compare any two clipboard items instantly with visual additions, deletions, and changes highlighting.',
+        'features.privacy.title': 'Privacy First', 'features.privacy.desc': 'All data stored locally. No telemetry, no tracking, no cloud. Optional crash reporting is opt-in only.',
+        'features.i18n.title': '15 Languages', 'features.i18n.desc': 'Full localization including RTL support. English, Turkish, Arabic, German, French, Spanish, and more.',
+        'shortcuts.title': 'Keyboard-Driven', 'shortcuts.subtitle': 'Designed for speed. Everything is accessible from your keyboard.',
+        'shortcuts.toggle': 'Toggle window', 'shortcuts.diff': 'Compare mode', 'shortcuts.navigate': 'Navigate list', 'shortcuts.paste': 'Select & paste',
+        'permissions.title': 'Permissions', 'permissions.subtitle': 'QlipLab requires minimal permissions to work its magic.',
+        'permissions.accessibility.title': 'Accessibility', 'permissions.accessibility.desc': 'Required to paste clipboard content into other apps via simulated Cmd+V. macOS will prompt you on first use. This is the same permission used by all clipboard managers.',
+        'permissions.network.title': 'Network (Optional)', 'permissions.network.desc': 'Only used for optional features: AI actions (your API key), crash reporting (opt-in), and issue reporting. No background network activity.',
+        'contact.title': 'Contact & Support', 'contact.subtitle': 'Questions, feedback, or issues? Use the built-in report feature or reach out directly.',
+        'contact.inapp': 'In-app: Settings → Report Issue',
+        'footer.privacy': 'Privacy Policy', 'footer.support': 'Support',
+      },
+      tr: {
+        'nav.features': 'Özellikler', 'nav.privacy': 'Gizlilik', 'nav.contact': 'İletişim',
+        'hero.badge': 'v0.1.19 beta — Mac App Store\'da mevcut',
+        'hero.title1': 'Akıllı Pano', 'hero.title2': 'Yeniden Tasarlandı',
+        'hero.subtitle': 'Format algılama, akıllı dönüşümler, kod parçacıkları, şifreli kasa ve yapay zeka destekli eylemlerle güçlü bir pano yöneticisi. Gizlilik öncelikli — tüm veriler cihazınızda kalır.',
+        'hero.download': 'Mac App Store\'dan İndir',
+        'features.title': 'İhtiyacınız olan her şey', 'features.subtitle': 'QlipLab, üretkenliğinizi artıran akıllı özelliklerle basit kopyala-yapıştırın ötesine geçer.',
+        'features.history.title': 'Pano Geçmişi', 'features.history.desc': 'Kopyaladığınız her şeyi otomatik yakalar. Arama, sabitleme ve formata göre filtreleme. Metin, resim ve zengin içerik desteği.',
+        'features.formats.title': 'Format Algılama', 'features.formats.desc': 'JSON, JWT, Base64, URL, SQL, XML, YAML, UUID, zaman damgası, renk ve daha fazlasını otomatik algılar.',
+        'features.transforms.title': 'Akıllı Dönüşümler', 'features.transforms.desc': 'Tek tıkla biçimlendirme, çözme, kodlama. Pipeline oluşturucu ile birden fazla dönüşümü zincirleyin.',
+        'features.snippets.title': 'Kod Parçacıkları', 'features.snippets.desc': 'Sözdizimi vurgulamalı yeniden kullanılabilir kod blokları. Şablon değişkenleri ve tetikleyici tabanlı otomatik genişletme.',
+        'features.vault.title': 'Güvenli Kasa', 'features.vault.desc': 'Kartlar, banka bilgileri, adresler ve daha fazlası için AES-256-GCM şifreli depolama. Kaba kuvvet korumalı otomatik kilit.',
+        'features.ai.title': 'Yapay Zeka', 'features.ai.desc': 'Özetleme, çeviri, dilbilgisi düzeltme, kod açıklama. Kendi API anahtarınızı kullanır — verileriniz, seçiminiz.',
+        'features.diff.title': 'Yan Yana Karşılaştırma', 'features.diff.desc': 'Herhangi iki pano öğesini anında karşılaştırın. Ekleme, silme ve değişiklik vurgulama.',
+        'features.privacy.title': 'Gizlilik Öncelikli', 'features.privacy.desc': 'Tüm veriler yerel olarak saklanır. Telemetri yok, izleme yok, bulut yok. Hata raporlama isteğe bağlıdır.',
+        'features.i18n.title': '15 Dil', 'features.i18n.desc': 'RTL desteği dahil tam yerelleştirme. İngilizce, Türkçe, Arapça, Almanca, Fransızca, İspanyolca ve daha fazlası.',
+        'shortcuts.title': 'Klavye Odaklı', 'shortcuts.subtitle': 'Hız için tasarlandı. Her şey klavyenizden erişilebilir.',
+        'shortcuts.toggle': 'Pencere aç/kapa', 'shortcuts.diff': 'Karşılaştırma', 'shortcuts.navigate': 'Listede gezin', 'shortcuts.paste': 'Seç ve yapıştır',
+        'permissions.title': 'İzinler', 'permissions.subtitle': 'QlipLab sihirini yapmak için minimum izin gerektirir.',
+        'permissions.accessibility.title': 'Erişilebilirlik', 'permissions.accessibility.desc': 'Cmd+V simülasyonu ile diğer uygulamalara yapıştırma için gereklidir. macOS ilk kullanımda sizi yönlendirecektir. Tüm pano yöneticileri aynı izni kullanır.',
+        'permissions.network.title': 'Ağ (İsteğe Bağlı)', 'permissions.network.desc': 'Sadece isteğe bağlı özellikler için kullanılır: Yapay zeka eylemleri, hata raporlama ve sorun bildirme.',
+        'contact.title': 'İletişim ve Destek', 'contact.subtitle': 'Sorularınız, geri bildirimleriniz veya sorunlarınız mı var? Uygulama içi raporlama özelliğini kullanın veya doğrudan ulaşın.',
+        'contact.inapp': 'Uygulama içi: Ayarlar → Sorun Bildir',
+        'footer.privacy': 'Gizlilik Politikası', 'footer.support': 'Destek',
+      },
+      de: {
+        'nav.features': 'Funktionen', 'nav.privacy': 'Datenschutz', 'nav.contact': 'Kontakt',
+        'hero.badge': 'Im Mac App Store verfügbar', 'hero.title1': 'Intelligente Zwischenablage', 'hero.title2': 'Neu gedacht',
+        'hero.subtitle': 'Ein leistungsstarker Zwischenablage-Manager mit Formaterkennung, intelligenten Transformationen, Code-Snippets, verschlüsseltem Tresor und KI-Aktionen.',
+        'hero.download': 'Im Mac App Store laden',
+        'features.title': 'Alles was Sie brauchen', 'features.subtitle': 'QlipLab geht über einfaches Kopieren und Einfügen hinaus.',
+        'contact.title': 'Kontakt', 'contact.subtitle': 'Fragen, Feedback oder Probleme? Wir freuen uns von Ihnen zu hören.',
+        'footer.privacy': 'Datenschutz', 'footer.support': 'Support',
+      },
+      fr: {
+        'nav.features': 'Fonctionnalités', 'nav.privacy': 'Confidentialité', 'nav.contact': 'Contact',
+        'hero.badge': 'Disponible sur le Mac App Store', 'hero.title1': 'Presse-papiers intelligent', 'hero.title2': 'Réinventé',
+        'hero.subtitle': 'Un gestionnaire de presse-papiers puissant avec détection de format, transformations intelligentes, extraits de code, coffre-fort chiffré et actions IA.',
+        'hero.download': 'Télécharger sur le Mac App Store',
+        'features.title': 'Tout ce dont vous avez besoin', 'features.subtitle': 'QlipLab va au-delà du simple copier-coller avec des fonctionnalités intelligentes.',
+        'contact.title': 'Contact', 'contact.subtitle': 'Questions, commentaires ou problèmes? Nous serions ravis de vous entendre.',
+        'footer.privacy': 'Politique de confidentialité', 'footer.support': 'Support',
+      },
+      es: {
+        'nav.features': 'Características', 'nav.privacy': 'Privacidad', 'nav.contact': 'Contacto',
+        'hero.badge': 'Disponible en Mac App Store', 'hero.title1': 'Portapapeles inteligente', 'hero.title2': 'Reimaginado',
+        'hero.download': 'Descargar en Mac App Store',
+        'features.title': 'Todo lo que necesitas', 'contact.title': 'Contacto',
+        'footer.privacy': 'Política de privacidad', 'footer.support': 'Soporte',
+      },
+      ar: { 'nav.features': 'الميزات', 'nav.privacy': 'الخصوصية', 'nav.contact': 'اتصل بنا', 'hero.title1': 'الحافظة الذكية', 'hero.title2': 'أعيد تصميمها', 'features.title': 'كل ما تحتاجه', 'contact.title': 'اتصل بنا', 'footer.privacy': 'سياسة الخصوصية', 'footer.support': 'الدعم' },
+      pt: { 'nav.features': 'Recursos', 'nav.privacy': 'Privacidade', 'nav.contact': 'Contato', 'hero.title1': 'Área de transferência inteligente', 'hero.title2': 'Reimaginada', 'features.title': 'Tudo que você precisa', 'contact.title': 'Contato', 'footer.privacy': 'Política de privacidade', 'footer.support': 'Suporte' },
+      zh: { 'nav.features': '功能', 'nav.privacy': '隐私', 'nav.contact': '联系我们', 'hero.title1': '智能剪贴板', 'hero.title2': '重新构想', 'features.title': '您需要的一切', 'contact.title': '联系我们', 'footer.privacy': '隐私政策', 'footer.support': '支持' },
+      ja: { 'nav.features': '機能', 'nav.privacy': 'プライバシー', 'nav.contact': 'お問い合わせ', 'hero.title1': 'スマートクリップボード', 'hero.title2': '再構築', 'features.title': '必要なすべて', 'contact.title': 'お問い合わせ', 'footer.privacy': 'プライバシーポリシー', 'footer.support': 'サポート' },
+      ko: { 'nav.features': '기능', 'nav.privacy': '개인정보', 'nav.contact': '연락처', 'hero.title1': '스마트 클립보드', 'hero.title2': '재구상', 'features.title': '필요한 모든 것', 'contact.title': '연락처', 'footer.privacy': '개인정보 처리방침', 'footer.support': '지원' },
+      ru: { 'nav.features': 'Возможности', 'nav.privacy': 'Конфиденциальность', 'nav.contact': 'Контакты', 'hero.title1': 'Умный буфер обмена', 'hero.title2': 'Переосмыслен', 'features.title': 'Всё что нужно', 'contact.title': 'Контакты', 'footer.privacy': 'Политика конфиденциальности', 'footer.support': 'Поддержка' },
+      it: { 'nav.features': 'Funzionalità', 'nav.privacy': 'Privacy', 'nav.contact': 'Contatti', 'hero.title1': 'Appunti intelligenti', 'hero.title2': 'Reinventati', 'features.title': 'Tutto ciò di cui hai bisogno', 'contact.title': 'Contatti', 'footer.privacy': 'Informativa sulla privacy', 'footer.support': 'Supporto' },
+      hi: { 'nav.features': 'विशेषताएं', 'nav.privacy': 'गोपनीयता', 'nav.contact': 'संपर्क', 'hero.title1': 'स्मार्ट क्लिपबोर्ड', 'hero.title2': 'पुनर्कल्पित', 'features.title': 'आपको जो कुछ भी चाहिए', 'contact.title': 'संपर्क', 'footer.privacy': 'गोपनीयता नीति', 'footer.support': 'सहायता' },
+      nl: { 'nav.features': 'Functies', 'nav.privacy': 'Privacy', 'nav.contact': 'Contact', 'hero.title1': 'Slim klembord', 'hero.title2': 'Opnieuw bedacht', 'features.title': 'Alles wat je nodig hebt', 'contact.title': 'Contact', 'footer.privacy': 'Privacybeleid', 'footer.support': 'Ondersteuning' },
+      pl: { 'nav.features': 'Funkcje', 'nav.privacy': 'Prywatność', 'nav.contact': 'Kontakt', 'hero.title1': 'Inteligentny schowek', 'hero.title2': 'Na nowo', 'features.title': 'Wszystko czego potrzebujesz', 'contact.title': 'Kontakt', 'footer.privacy': 'Polityka prywatności', 'footer.support': 'Wsparcie' },
+    };
+
+    const langNames = {
+      en: 'English', tr: 'Türkçe', ar: 'العربية', de: 'Deutsch', fr: 'Français',
+      es: 'Español', pt: 'Português', zh: '中文', ja: '日本語', ko: '한국어',
+      ru: 'Русский', it: 'Italiano', hi: 'हिन्दी', nl: 'Nederlands', pl: 'Polski'
+    };
+
+    // Populate language selector
+    const select = document.getElementById('lang-select');
+    Object.entries(langNames).forEach(([code, name]) => {
+      const opt = document.createElement('option');
+      opt.value = code;
+      opt.textContent = name;
+      select.appendChild(opt);
+    });
+
+    // Detect system language
+    function getDefaultLang() {
+      const saved = localStorage.getItem('qliplab-site-lang');
+      if (saved && translations[saved]) return saved;
+      const sys = navigator.language.split('-')[0];
+      return translations[sys] ? sys : 'en';
+    }
+
+    function applyTranslations(lang) {
+      const t = { ...translations.en, ...(translations[lang] || {}) };
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) el.textContent = t[key];
+      });
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      select.value = lang;
+      localStorage.setItem('qliplab-site-lang', lang);
+    }
+
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('qliplab-site-theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    select.addEventListener('change', (e) => applyTranslations(e.target.value));
+
+    // Init
+    applyTranslations(getDefaultLang());
+  </script>
 </body>
 </html>
