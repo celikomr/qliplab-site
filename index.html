@@ -39,8 +39,19 @@
 </head>
 <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
 
+  <!-- Promo Banner -->
+  <div id="promo-banner" class="fixed top-0 w-full bg-gray-950 dark:bg-white text-white dark:text-gray-900 text-center py-2.5 z-[60] border-b border-gray-800 dark:border-gray-200">
+    <div class="flex items-center justify-center gap-3 text-sm">
+      <span class="bg-accent text-white text-xs font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">Early Access</span>
+      <span class="font-medium" data-i18n="promo.text">Get QlipLab Premium for <strong class="text-accent">$9.99</strong> <span class="line-through opacity-50">$14.99</span> — Launch offer, limited time</span>
+      <button onclick="document.getElementById('promo-banner').remove();document.getElementById('nav').style.top='0'" class="ml-2 p-1 hover:bg-white/10 dark:hover:bg-gray-900/10 rounded-full transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
   <!-- Nav -->
-  <nav class="fixed top-0 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 z-50">
+  <nav id="nav" class="fixed top-10 w-full bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 z-50">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-3">
         <img src="icon.png" alt="QlipLab" class="w-8 h-8 rounded-lg">
@@ -63,11 +74,11 @@
   </nav>
 
   <!-- Hero -->
-  <section class="pt-32 pb-20 px-6 bg-grid">
+  <section class="pt-42 pb-20 px-6 bg-grid">
     <div class="max-w-4xl mx-auto text-center">
       <div class="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-1.5 rounded-full text-sm font-medium mb-6">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-        <span data-i18n="hero.badge">v0.1.19 beta — Available on Mac App Store</span>
+        <span data-i18n="hero.badge">v0.1.20 beta — Available on Mac App Store</span>
       </div>
       <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
         <span data-i18n="hero.title1">Smart Clipboard</span><br>
@@ -277,7 +288,8 @@
     const translations = {
       en: {
         'nav.features': 'Features', 'nav.privacy': 'Privacy', 'nav.contact': 'Contact',
-        'hero.badge': 'v0.1.19 beta — Available on Mac App Store',
+        'promo.text': 'Get QlipLab Premium for <strong class=\"text-accent\">$9.99</strong> <span class=\"line-through opacity-50\">$14.99</span> — Launch offer, limited time',
+        'hero.badge': 'v0.1.20 beta — Available on Mac App Store',
         'hero.title1': 'Smart Clipboard', 'hero.title2': 'Reimagined',
         'hero.subtitle': 'A powerful clipboard manager with format detection, intelligent transforms, code snippets, encrypted vault, and AI-powered actions. Privacy-first — all data stays on your device.',
         'hero.download': 'Mac App Store',
@@ -303,7 +315,8 @@
       },
       tr: {
         'nav.features': 'Özellikler', 'nav.privacy': 'Gizlilik', 'nav.contact': 'İletişim',
-        'hero.badge': 'v0.1.19 beta — Mac App Store\'da mevcut',
+        'promo.text': 'QlipLab Premium <strong class=\"text-accent\">$9.99</strong> <span class=\"line-through opacity-50\">$14.99</span> — Lansman fiyatı, sınırlı süre',
+        'hero.badge': 'v0.1.20 beta — Mac App Store\'da mevcut',
         'hero.title1': 'Akıllı Pano', 'hero.title2': 'Yeniden Tasarlandı',
         'hero.subtitle': 'Format algılama, akıllı dönüşümler, kod parçacıkları, şifreli kasa ve yapay zeka destekli eylemlerle güçlü bir pano yöneticisi. Gizlilik öncelikli — tüm veriler cihazınızda kalır.',
         'hero.download': 'Mac App Store\'dan İndir',
