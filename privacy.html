@@ -29,7 +29,7 @@
 <body class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300 bg-grid">
 
   <!-- Nav -->
-  <nav class="fixed top-0 w-full bg-white/70 dark:bg-gray-950/70 backdrop-blur-xl border-b border-gray-200/50 dark:border-gray-800/50 shadow-sm z-50 transition-all duration-300">
+  <nav id="nav" class="fixed top-0 w-full bg-transparent backdrop-blur-none z-50 transition-all duration-300">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3">
         <img src="icon.png" alt="QlipLab" class="w-8 h-8 rounded-lg">
@@ -347,6 +347,18 @@
     });
 
     select.addEventListener('change', (e) => applyTranslations(e.target.value));
+    // Scroll-based glass effect on nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        nav.classList.add('bg-white/70', 'dark:bg-gray-950/70', 'backdrop-blur-xl', 'border-b', 'border-gray-200/50', 'dark:border-gray-800/50', 'shadow-sm');
+        nav.classList.remove('bg-transparent', 'backdrop-blur-none');
+      } else {
+        nav.classList.remove('bg-white/70', 'dark:bg-gray-950/70', 'backdrop-blur-xl', 'border-b', 'border-gray-200/50', 'dark:border-gray-800/50', 'shadow-sm');
+        nav.classList.add('bg-transparent', 'backdrop-blur-none');
+      }
+    });
+
     applyTranslations(getDefaultLang());
   </script>
 </body>
